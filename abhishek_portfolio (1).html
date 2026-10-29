@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abhishek's personal portfolio — BCA student interested in IT, AI, data science, and photo editing.">
+  <title>Abhishek | Portfolio</title>
+  <style>
+    :root {
+      --bg: #070b16;
+      --panel: rgba(17, 27, 49, .78);
+      --text: #eef4ff;
+      --muted: #a9b8d3;
+      --cyan: #61e7ff;
+      --blue: #7294ff;
+      --line: rgba(116, 165, 255, .22);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(46, 92, 190, .22), transparent 30rem),
+        radial-gradient(circle at 90% 40%, rgba(0, 221, 255, .10), transparent 28rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1080px, 90%); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(7, 11, 22, .84);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { font-weight: 900; letter-spacing: 2px; text-decoration: none; }
+    .logo span { color: var(--cyan); }
+    nav { display: flex; flex-wrap: wrap; gap: 20px; }
+    nav a { color: var(--muted); font-size: .94rem; text-decoration: none; }
+    nav a:hover, nav a:focus { color: var(--cyan); }
+    .hero { min-height: 82vh; display: grid; place-items: center; padding: 90px 0 70px; }
+    .hero-grid { display: grid; grid-template-columns: 1.5fr .8fr; align-items: center; gap: 48px; }
+    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: 3px; font-size: .78rem; font-weight: 800; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); line-height: 1.05; margin: 14px 0; letter-spacing: -2px; }
+    .gradient { background: linear-gradient(90deg, var(--cyan), var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { color: var(--muted); max-width: 620px; font-size: 1.12rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 28px; }
+    .btn { display: inline-block; padding: 11px 18px; border-radius: 10px; font-weight: 750; text-decoration: none; border: 1px solid var(--line); transition: transform .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 0 24px rgba(97, 231, 255, .18); }
+    .primary { color: #06101b; background: linear-gradient(90deg, var(--cyan), #9eb4ff); border: 0; }
+    .photo-box {
+      width: min(300px, 100%); aspect-ratio: 1; margin: auto;
+      display: grid; place-items: center; text-align: center; padding: 24px;
+      border: 1px dashed rgba(97, 231, 255, .6); border-radius: 30px;
+      background: linear-gradient(145deg, rgba(97, 231, 255, .09), rgba(114, 148, 255, .04));
+      box-shadow: 0 0 70px rgba(64, 117, 255, .12);
+    }
+    .photo-icon { font-size: 3.6rem; }
+    .photo-box small { color: var(--muted); display: block; }
+    section { padding: 76px 0; scroll-margin-top: 76px; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 8px; }
+    .section-intro { color: var(--muted); margin: 0 0 28px; }
+    .panel, .card {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.12);
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { transition: transform .2s, border-color .2s; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(97, 231, 255, .55); }
+    .card h3 { margin: 8px 0; }
+    .icon { font-size: 1.65rem; }
+    .muted { color: var(--muted); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .tag { padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line); color: #d9e7ff; background: rgba(76, 112, 190, .12); font-size: .9rem; }
+    .timeline { border-left: 2px solid var(--line); padding-left: 22px; }
+    .timeline .dot { color: var(--cyan); font-weight: 800; }
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; }
+    footer { padding: 26px 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: .9rem; }
+    .reveal { animation: rise .7s ease both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 760px) {
+      .nav { padding: 14px 0; align-items: flex-start; flex-direction: column; }
+      nav { gap: 13px; }
+      .hero { min-height: auto; padding: 65px 0; }
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero-grid { gap: 35px; }
+      .photo-box { width: 220px; }
+      section { padding: 54px 0; }
+      h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#home">ABHISHEK<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#goals">Goals</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">BCA Student · Technology Enthusiast</div>
+          <h1>Hi, I'm<br><span class="gradient">Abhishek.</span></h1>
+          <p class="lead">I’m studying Computer Applications and exploring the worlds of IT, Artificial Intelligence, Data Science, and creative photo editing.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">Explore my work ↘</a>
+            <a class="btn" href="#about">About me</a>
+          </div>
+        </div>
+        <div class="photo-box reveal" aria-label="Photo placeholder">
+          <div><div class="photo-icon">＋</div><strong>Your photo goes here</strong><small>Add a portrait later by replacing this placeholder in the HTML.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="eyebrow">A little introduction</div>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-intro">Learning today, building for tomorrow.</p>
+        <div class="panel">
+          I’m Abhishek, a BCA student at <strong>GEMS Arts and Science College</strong>, affiliated with the <strong>University of Calicut</strong>. I’m interested in computer technology, AI, and data science, and I also enjoy photo editing with Lightroom. I like learning new tools, practising technical concepts, and turning what I learn into small projects. My goal is to continue my education and build a career in the IT field.
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="eyebrow">What I’m exploring</div>
+        <h2 class="section-title">Skills & Interests</h2>
+        <p class="section-intro">A growing collection of topics I’m learning and practising.</p>
+        <div class="grid-3">
+          <article class="card"><div class="icon">⌘</div><h3>Computer Science</h3><p class="muted">Programming fundamentals, data structures, and computer applications.</p></article>
+          <article class="card"><div class="icon">✦</div><h3>AI & Data Science</h3><p class="muted">Learning about artificial intelligence, data preparation, and machine learning concepts.</p></article>
+          <article class="card"><div class="icon">◈</div><h3>Creative Editing</h3><p class="muted">Photo editing and visual creativity using Adobe Lightroom.</p></article>
+        </div>
+        <div class="tag-list">
+          <span class="tag">BCA</span><span class="tag">IT</span><span class="tag">Artificial Intelligence</span><span class="tag">Data Science</span><span class="tag">Lightroom</span><span class="tag">Learning Web Development</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="eyebrow">Practice & coursework</div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-intro">Academic work and learning projects. Add links or screenshots when available.</p>
+        <div class="grid-3">
+          <article class="card"><div class="icon">❖</div><h3>General Knowledge Quiz</h3><p class="muted">A programming practice project focused on quiz questions and user interaction.</p><span class="tag">Programming</span></article>
+          <article class="card"><div class="icon">⌁</div><h3>Employee Salary Prediction</h3><p class="muted">An academic study of salary prediction and the concepts of overfitting and underfitting.</p><span class="tag">Data Science</span></article>
+          <article class="card"><div class="icon">⚽</div><h3>AI in Sports</h3><p class="muted">A seminar project exploring ways artificial intelligence can be used in sports.</p><span class="tag">AI Research</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <div class="wrap">
+        <div class="eyebrow">The road ahead</div>
+        <h2 class="section-title">My Goals</h2>
+        <div class="panel timeline">
+          <p><span class="dot">01 / Learn</span><br>Strengthen my computer science fundamentals and practical skills.</p>
+          <p><span class="dot">02 / Build</span><br>Create more projects in programming, web development, AI, and data science.</p>
+          <p><span class="dot">03 / Grow</span><br>Complete my degree, continue higher studies, and work toward a career in IT.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="eyebrow">Let’s connect</div>
+        <h2 class="section-title">Contact</h2>
+        <div class="panel contact-box">
+          <div><h3>Open to learning and collaboration.</h3><p class="muted">Add your professional email and GitHub profile when you’re ready.</p></div>
+          <div class="actions">
+            <!-- Replace # with your actual profile URLs -->
+            <a class="btn" href="#" onclick="alert('Replace this link with your GitHub profile URL.'); return false;">GitHub profile</a>
+            <a class="btn primary" href="#" onclick="alert('Replace this link with your professional email address.'); return false;">Email me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© <span id="year"></span> Abhishek · Personal Portfolio</div></footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
